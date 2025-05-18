@@ -1,0 +1,6 @@
+Why even use typescript ?
+
+- type hints (assumptions) (not static typing, very important)
+- intellisense using LSP (language server protocol) (tsserver process running in background)
+- improved "correctness" (building on top of other tings, refactoring especially)
+
