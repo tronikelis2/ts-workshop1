@@ -1,6 +1,6 @@
 // PRIMITIVE TYPES
 
-let str: string = "string";
+let str: string = "string"; // immutable
 let num: number = 20; // float64 actually
 let bool: boolean = false;
 // god why are there 2 types for "empty" type
