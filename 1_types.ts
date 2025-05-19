@@ -102,6 +102,10 @@ type Foobar = {
   foobar: string;
 };
 
+const foobar: Foobar = {
+  foobar: "ff",
+};
+
 // mark field optional with ?, essentially the same thing as adding | undefined
 
 type Foobar1 = {
