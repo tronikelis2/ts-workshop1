@@ -4,3 +4,4 @@ Why even use typescript ?
 - intellisense using LSP (language server protocol) (tsserver process running in background)
 - improved "correctness" (building on top of other tings, refactoring especially)
 
+Recommend you to read after this https://devbook.int.vinted.com/frontend/practices/typescript.html
