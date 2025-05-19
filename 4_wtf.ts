@@ -8,7 +8,7 @@ function addString(arr: StringOrNumber) {
 
 const onlyNumbers: number[] = [1, 2, 3];
 
-// a square in a circle factory, huh, I guess we're doing circles now
+// a square in a circle factory, huh, I guess we're doing squares now
 addString(onlyNumbers);
 
 console.log({ onlyNumbers });
