@@ -55,6 +55,9 @@ function fn(arg1: string, arg2: string): number {
   return 0;
 }
 
+// arrow function syntax is pretty much the same
+const fn1 = (arg1: string, arg2: string): number => 0;
+
 // VOID, there is no such thing in JS
 // means the absence of a value, but this is not true
 
