@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from "react";
+import React from "react";
 
 // warmup: convert to typescript with 1 generic
 function arrayMap<T>(arr: T[], mapper: (arg: T) => T) {
@@ -15,24 +16,31 @@ const foo2 = arrayMap(foo, (num) => num * 2);
 let todoId = 0;
 
 // convert to typescript
-function TodoList({ initialTodosOrUndefined }) {
+
+type Todo = {
+  name: string;
+  id: number;
+};
+
+type TodoListArgument = {
+  initialTodosOrUndefined: Todo[] | undefined;
+};
+
+function TodoList({ initialTodosOrUndefined }: TodoListArgument) {
   // function useState<S = undefined>(): [S | undefined, Dispatch<SetStateAction<S | undefined>>];
-  const [todos, setTodos] = useState(initialTodos);
-  // function useRef<T>(initialValue: T): RefObject<T>;
-  const priorityRef = useRef();
+  const [todos, setTodos] = useState(initialTodosOrUndefined || []);
 
   function create() {
     setTodos((prev) => [
       ...prev,
       {
         name: "name",
-        priority: priorityRef.current.value,
         id: todoId++,
       },
     ]);
   }
 
-  function remove(index) {
+  function remove(index: number) {
     setTodos((prev) => {
       prev = [...prev];
       prev.splice(index, 1);
@@ -42,7 +50,7 @@ function TodoList({ initialTodosOrUndefined }) {
 
   // function useMemo<T>(factory: () => T, deps: DependencyList): T;
   const sortedTodos = useMemo(() => {
-    return [...todos].sort((a, b) => b.priority - a.priority);
+    return [...todos].sort((a, b) => b.id - a.id);
   }, []);
 
   return (
@@ -50,16 +58,10 @@ function TodoList({ initialTodosOrUndefined }) {
       {sortedTodos.map((todo) => (
         <div key={todo.name}>
           name: {todo.name}
-          priority {todo.priority}
+          id {todo.id}
         </div>
       ))}
-      <input
-        type="number"
-        placeholder="piority"
-        min="0"
-        max="99"
-        ref={priorityRef}
-      ></input>
+      <input type="number" placeholder="piority" min="0" max="99"></input>
       <button onClick={create}>Create new todo</button>
     </div>
   );
